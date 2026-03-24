@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import listar_tarefas
+from .views import listar_tarefas, listar_tarefas_abertas
 
 urlpatterns = [
     path ('tarefas/', listar_tarefas),
-    path ('api/', include ('tarefas.urls'))
+    path('tarefas/abertas/', listar_tarefas_abertas, name='tarefas_abertas')
+
 ]
