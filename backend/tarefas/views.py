@@ -2,6 +2,11 @@ from django.http import JsonResponse
 from .models import Tarefas
 from datetime import date
 
+
+def listar_tarefas(request):
+    tarefas = Tarefas.objects.all().values('id', 'titulo', 'status', 'usuario_responsavel')
+    return JsonResponse(list(tarefas), safe=False)
+
 def listar_tarefas(request):
     tarefas = Tarefas.objects.all().values()
     return JsonResponse(list(tarefas), safe=False)
